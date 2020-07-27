@@ -31,8 +31,9 @@ font pango:DejaVu Sans Mono 9
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec urxvt
+# start a terminal with Alt (left or right) + Enter
+#bindsym $mod+Return exec urxvt
+bindsym Mod1+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -208,7 +209,7 @@ exec --no-startup-id start-pulseaudio-x11 &
 exec --no-startup-id mate-volume-control-applet &
 exec --no-startup-id mintupdate-launcher &
 exec --no-startup-id parcellite &
-exec --no-startup-id firefox &
+exec --no-startup-id caja --no-desktop &
 exec --no-startup-id (sleep 5 && nitrogen --restore) &
 
 # exec --no-startup-id /usr/lib/mate-panel/clock-applet &
@@ -216,7 +217,7 @@ exec --no-startup-id (sleep 5 && nitrogen --restore) &
 # exec --no-startup-id mate-screensaver &
 
 # Restart touchpad to ensure it works
- exec "sh -c 'sudo  modprobe -r psmouse; sleep 5; sudo  modprobe psmouse'"
+ exec "sh -c 'sudo modprobe -r psmouse; sleep 5; sudo modprobe psmouse'"
 
 
 # Setup for calendar
@@ -224,8 +225,10 @@ for_window [class="Orage"] floating enable, move position mouse, move up 24 px, 
 
 
 # Set up screen lock
-exec xautolock -time 10 -locker "i3lock -c 000000"
-bindsym $mod+x exec i3lock -c 000000
+# exec xautolock -time 5 -locker "i3lock -c 000000"
+#bindsym $mod+x exec i3lock -c 000000
+bindsym $mod+x exec "mate-screensaver-command -l"
+
 
 # Keyboard layouts bindings
 bindsym Control+1 exec xkb-switch -s 'us(qwerty)'
@@ -239,6 +242,7 @@ assign [class="Caja"] $ws2
 assign [instance="libreoffice"] $ws3
 assign [instance="soffice"] $ws3
 assign [class="^(?i)libreoffice*"] $ws3
+assign [class="Gimp-2.8"] $ws3
 assign [class="Vivaldi-stable"] $ws4
 assign [class="TelegramDesktop"] $ws5
 assign [class="Sublime_text"] $ws6
@@ -246,8 +250,7 @@ assign [class="jetbrains-pycharm"] $ws6
 assign [class="Mate-system-monitor"] $ws10
 
 
-
 # Layout auto restore for work terminals
-exec --no-startup-id i3-msg 'workspace $ws7; append_layout /home/user/.config/i3/workspace-7.json; workspace $ws1'
-exec --no-startup-id urxvt &
-exec --no-startup-id urxvt &
+# exec --no-startup-id i3-msg 'workspace $ws7; append_layout /home/user/.config/i3/workspace-7.json; workspace $ws1'
+# exec --no-startup-id urxvt &
+# exec --no-startup-id urxvt &
