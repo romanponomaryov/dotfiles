@@ -218,6 +218,8 @@ exec --no-startup-id (sleep 5 && nitrogen --restore) &
 
 # Restart touchpad to ensure it works
  exec "sh -c 'sudo modprobe -r psmouse; sleep 5; sudo modprobe psmouse'"
+ # and a shortcut to manually restart touchpad and mouse
+ bindsym $mod+t exec "sudo modprobe -r psmouse"
 
 
 # Setup for calendar
@@ -231,7 +233,7 @@ bindsym $mod+x exec "mate-screensaver-command -l"
 
 
 # Keyboard layouts bindings
-bindsym Control+1 exec xkb-switch -s 'us(qwerty)'
+bindsym Control+1 exec xkb-switch -s 'us'
 bindsym Control+2 exec xkb-switch -s ru
 bindsym Control+3 exec xkb-switch -s ua
 bindsym Control+4 exec xkb-switch -s pl
@@ -254,3 +256,6 @@ assign [class="Mate-system-monitor"] $ws10
 # exec --no-startup-id i3-msg 'workspace $ws7; append_layout /home/user/.config/i3/workspace-7.json; workspace $ws1'
 # exec --no-startup-id urxvt &
 # exec --no-startup-id urxvt &
+
+# Force floating by default for some apps
+for_window [class="SimpleScreenRecorder"] floating enable
