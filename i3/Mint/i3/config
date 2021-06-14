@@ -217,10 +217,12 @@ exec --no-startup-id (sleep 5 && nitrogen --restore) &
 # exec --no-startup-id mate-screensaver &
 
 # Restart touchpad to ensure it works
- exec "sh -c 'sudo modprobe -r psmouse; sleep 5; sudo modprobe psmouse'"
- # and a shortcut to manually restart touchpad and mouse
- bindsym $mod+t exec "sudo modprobe -r psmouse"
-
+ exec "sh -c 'sudo modprobe -r psmouse; sleep 2; sudo modprobe psmouse'"
+ # hotkeys to manually restart touchpad
+ bindsym $mod+t exec "xinput disable 'ETPS/2 Elantech Touchpad'"
+ bindsym $mod+y exec "xinput enable 'ETPS/2 Elantech Touchpad'"
+ # disable touchpad by default
+ exec "xinput disable 'ETPS/2 Elantech Touchpad'"
 
 # Setup for calendar
 for_window [class="Orage"] floating enable, move position mouse, move up 24 px, resize set 239 211
@@ -249,7 +251,9 @@ assign [class="Vivaldi-stable"] $ws4
 assign [class="TelegramDesktop"] $ws5
 assign [class="Sublime_text"] $ws6
 assign [class="jetbrains-pycharm"] $ws6
+assign [class="Slack"] $ws8
 assign [class="Mate-system-monitor"] $ws10
+assign [class="zoom"] $ws10
 
 
 # Layout auto restore for work terminals
