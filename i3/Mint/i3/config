@@ -235,7 +235,7 @@ bindsym $mod+x exec "mate-screensaver-command -l"
 
 
 # Keyboard layouts bindings
-bindsym Control+1 exec xkb-switch -s 'us'
+bindsym Control+1 exec xkb-switch -s 'us(altgr-intl)'
 bindsym Control+2 exec xkb-switch -s ru
 bindsym Control+3 exec xkb-switch -s ua
 bindsym Control+4 exec xkb-switch -s pl
